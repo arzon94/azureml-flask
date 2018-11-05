@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Prediction Calculator</title>
+  <meta name="description" content="azure api test">
+  <meta name="author" content="SitePoint">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="static/styles.css">
+
+</head>
+
+<body>
+  <!-- <script src="js/scripts.js"></script> -->
+  <h1><strong>Prediction Calculator</strong></h1>
+  {% if form %}
+  <form method="POST" action="/">
+    {{ form.csrf_token }}
+    <p>{{ form.Gender.label }} {{ form.Gender(size=10) }}</p>
+    <p>{{ form.IsReshare.label }} {{ form.IsReshare(size=20) }}</p>
+    <p>{{ form.RetweetCount.label }} {{ form.RetweetCount(size=20) }}</p>
+    <p>{{ form.Klout.label }} {{ form.Klout(size=20) }}</p>
+    <p>{{ form.Sentiment.label }} {{ form.Sentiment(size=20) }}</p>
+    <p>{{ form.submit() }}</p>
+  </form>
+  {% endif %}
+  {% if result %}
+  <div ><h1>Your Result:</h1>{{result["Results"]["output1"]["value"]["Values"][0][0]}}</div>
+  {% endif %}
+</body>
+</html>
